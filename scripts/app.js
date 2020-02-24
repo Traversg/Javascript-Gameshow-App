@@ -2,8 +2,8 @@ const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const startButton = document.querySelector('.btn__reset');
 const missedGuess = 0;
-const phrases = ['No soup for you', 'These pretzals are making me thirsty', 'I was in the pool', 'Master of my domain', 'Serenity now'];
-const phraseArray = getRandomPhraseAsArray(phrases);
+const phrases = ['No soup for you', 'These pretzels are making me thirsty', 'I was in the pool', 'Master of my domain', 'Serenity now'];
+
 
 // return a random phrase from an array
 function getRandomPhraseAsArray(arr) {
@@ -11,6 +11,7 @@ function getRandomPhraseAsArray(arr) {
      let randomPhrase = arrayObject;
      return randomPhrase.split('');
 }
+
 
 // adds the letters of a string to the display
 function addPhraseToDisplay(arr) {
@@ -24,6 +25,10 @@ function addPhraseToDisplay(arr) {
        phraseToDisplay = ul.appendChild(li);
     }  return phraseToDisplay;
 };
+
+const phraseArray = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(phraseArray);
+
 
 // check if a letter is in the phrase 
 function checkLetter(button) {
@@ -54,7 +59,7 @@ qwerty.addEventListener('click', e=> {
         e.target.className = 'chosen'
         let chosen = document.querySelectorAll('.chosen');
         chosen.disabled = true;
-        let letterFound = checkLetter(chosen);
+        let letterFound = checkLetter(e);
     }
 
 });
