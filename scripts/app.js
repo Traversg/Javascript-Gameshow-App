@@ -4,7 +4,7 @@ const startButton = document.querySelector('.btn__reset');
 var missed = 0;
 var overlay = document.getElementById('overlay');
 const phrases = ['No soup for you', 'These pretzels are making me thirsty', 'I was in the pool', 'Master of my domain', 'Serenity now'];
-
+const title= document.querySelector('.title');
 
 // return a random phrase from an array
 function getRandomPhraseAsArray(arr) {
@@ -63,6 +63,7 @@ qwerty.addEventListener('click', e=> {
             missed += 1;
         }
     } 
+    checkWin(e.target);
     });
 
 // check if the game has been won or lost
@@ -71,13 +72,14 @@ qwerty.addEventListener('click', e=> {
     let letter = document.getElementsByClassName('letter');
     if (show.length === letter.length) {
         overlay.classList.add('win');
-        let title= document.querySelector('.title');
         title.textContent = 'You won!';
         overlay.style.display = 'flex';
-    } else if (missed > 4) {
+    } else if (missed >= 5) {
         overlay.classList.add('lose');
         title.textContent = 'Sorry, you lost';
         overlay.style.display = 'flex';
     }
 }
+
+
 
