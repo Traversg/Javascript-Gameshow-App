@@ -22,7 +22,9 @@ function addPhraseToDisplay(arr) {
         li.textContent = arr[i];
         if (li.textContent !== ' ') {
             li.className = 'letter';
-        } 
+        } else {
+            li.className = 'space'
+        }
        phraseToDisplay = ul.appendChild(li);
     }  return phraseToDisplay;
 };
@@ -52,9 +54,8 @@ startButton.addEventListener('click', () => {
 // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', e=> {
     if (e.target.tagName == 'BUTTON') {
-        e.target.className = 'chosen'
-        let chosen = document.querySelectorAll('.chosen');
-        chosen.disabled = true;
+        e.target.className = 'chosen';
+        e.target.disabled = true;
         let letterFound = checkLetter(e.target);
         if (letterFound === null) {
             let ol = document.querySelector('#scoreboard ol');
